@@ -553,7 +553,9 @@ export default function ChatPage() {
                   color: msg.role === 'user' ? '#000' : '#fff',
                   border: msg.role === 'bot' ? '1px solid rgba(255,255,255,0.08)' : 'none',
                   fontSize: '0.95rem', lineHeight: '1.5',
-                  boxShadow: msg.role === 'user' ? '0 4px 15px rgba(245,158,11,0.2)' : 'none'
+                  boxShadow: msg.role === 'user' ? '0 4px 15px rgba(245,158,11,0.2)' : 'none',
+                  textAlign: isAr ? 'right' : 'left',
+                  direction: isAr ? 'rtl' : 'ltr'
                 }}>
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {msg.content}
