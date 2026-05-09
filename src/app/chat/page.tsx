@@ -429,6 +429,19 @@ export default function ChatPage() {
     }
   };
 
+  const toggleLanguage = async () => {
+    const newLang = lang === 'en' ? 'ar' : 'en';
+    setLang(newLang);
+    
+    // Persist to DB
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
+      await supabase.schema('batata').from('profiles')
+        .update({ language: newLang === 'ar' ? 'Arabic' : 'English' })
+        .eq('id', session.user.id);
+    }
+  };
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     router.push('/login');
@@ -502,7 +515,20 @@ export default function ChatPage() {
             </div>
           </div>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <button 
+            onClick={toggleLanguage}
+            style={{ 
+              background: 'rgba(255,255,255,0.05)', 
+              color: 'var(--primary)', 
+              padding: '8px 12px', 
+              borderRadius: '12px',
+              fontSize: '0.85rem',
+              fontWeight: '700'
+            }}
+          >
+            {lang === 'en' ? 'AR' : 'EN'}
+          </button>
           <button 
             onClick={() => setShowKnowledge(true)}
             style={{ background: 'rgba(255,255,255,0.05)', color: '#a0a0a0', padding: '10px', borderRadius: '12px' }}
