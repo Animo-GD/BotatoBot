@@ -776,27 +776,56 @@ export default function ChatPage() {
                 )}
               </div>
 
-              <label style={{
-                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                border: '2px dashed rgba(255,255,255,0.1)', borderRadius: '16px', padding: '40px 20px',
-                cursor: isUploading ? 'not-allowed' : 'pointer', transition: 'all 0.2s',
-                background: 'rgba(255,255,255,0.02)'
-              }}>
+              <label 
+                style={{
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                  border: '2px dashed rgba(245,158,11,0.3)', borderRadius: '16px', padding: '32px 20px',
+                  cursor: isUploading ? 'not-allowed' : 'pointer', transition: 'all 0.2s',
+                  background: 'rgba(255,255,255,0.02)',
+                  position: 'relative'
+                }}
+                title={isAr ? 'سيتم استخدام هذا الملف لتزويد البطاطا بمعلومات خاصة للرد على أسئلتك بدقة' : 'This file will be used to provide the bot with specific info to answer your questions accurately'}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--primary)';
+                  e.currentTarget.style.background = 'rgba(245,158,11,0.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(245,158,11,0.3)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+                }}
+              >
                 {isUploading ? (
                   <div style={{ textAlign: 'center' }}>
                     <Loader2 className="animate-spin" size={32} color="var(--primary)" style={{ marginBottom: '12px' }} />
-                    <p>{isAr ? 'جاري التحليل والتقطيع...' : 'Parsing & Chunking...'}</p>
+                    <p style={{ fontWeight: '600', color: 'var(--primary)' }}>{isAr ? 'جاري التحليل والتقطيع...' : 'Parsing & Chunking...'}</p>
                   </div>
                 ) : uploadStatus === 'success' ? (
                   <div style={{ textAlign: 'center', color: '#10b981' }}>
                     <CheckCircle2 size={40} style={{ marginBottom: '12px' }} />
-                    <p>{isAr ? 'تم الرفع بنجاح!' : 'Uploaded successfully!'}</p>
+                    <p style={{ fontWeight: '600' }}>{isAr ? 'تم الرفع بنجاح!' : 'Uploaded successfully!'}</p>
                   </div>
                 ) : (
                   <>
-                    <FileUp size={40} color="var(--primary)" style={{ marginBottom: '16px', opacity: 0.7 }} />
-                    <p style={{ fontWeight: '600' }}>{isAr ? 'اضغط لرفع ملف PDF' : 'Click to upload PDF'}</p>
-                    <p style={{ fontSize: '0.75rem', color: '#666', marginTop: '8px' }}>Max 10MB</p>
+                    <div style={{ 
+                      width: '56px', height: '56px', borderRadius: '14px', 
+                      background: 'rgba(245,158,11,0.1)', display: 'flex', 
+                      alignItems: 'center', justifyContent: 'center', marginBottom: '8px'
+                    }}>
+                      <FileUp size={28} color="var(--primary)" />
+                    </div>
+                    <div style={{ textAlign: 'center', marginBottom: '12px' }}>
+                      <p style={{ fontWeight: '700', fontSize: '1.05rem', marginBottom: '4px' }}>
+                        {isAr ? 'أضف ملف معرفة جديد' : 'Add New Knowledge PDF'}
+                      </p>
+                      <p style={{ fontSize: '0.8rem', color: '#888' }}>
+                        {isAr ? 'اسحب الملف هنا أو اضغط للاختيار' : 'Drag and drop or click to browse'}
+                      </p>
+                    </div>
+                    <div className="btn-primary" style={{ 
+                      padding: '8px 20px', fontSize: '0.85rem', pointerEvents: 'none'
+                    }}>
+                      {isAr ? 'اختر ملف PDF' : 'Select PDF File'}
+                    </div>
                   </>
                 )}
                 <input type="file" accept=".pdf" onChange={handleFileUpload} style={{ display: 'none' }} disabled={isUploading} />
