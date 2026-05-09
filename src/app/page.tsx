@@ -14,10 +14,10 @@ export default function Home() {
       if (session) {
         // Check onboarding
         const { data: profile } = await supabase
+          .schema('batata')
           .from('profiles')
           .select('onboarding_completed')
           .eq('id', session.user.id)
-          .schema('batata')
           .single();
 
         if (profile?.onboarding_completed) {
