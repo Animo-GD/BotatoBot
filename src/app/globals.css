@@ -149,3 +149,15 @@ label {
   font-size: 0.9rem;
   color: #a0a0a0;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body { font-size: 15px; }
+  .glass { border-radius: 16px; }
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+}
+
+@media (max-width: 480px) {
+  main { padding: 8px !important; }
+}

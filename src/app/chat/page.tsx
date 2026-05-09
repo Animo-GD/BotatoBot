@@ -541,7 +541,7 @@ export default function ChatPage() {
                 }}>{profile.avatar}</div>
               )}
               <div style={{ 
-                maxWidth: '78%',
+                maxWidth: '85%',
                 order: msg.role === 'bot' ? (isAr ? 1 : 2) : 1
               }}>
                 <div className="markdown-content" style={{
@@ -686,9 +686,17 @@ export default function ChatPage() {
             padding: '20px', backdropFilter: 'blur(8px)'
           }}>
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
+              initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 20, opacity: 0 }}
               className="glass"
-              style={{ width: '100%', maxWidth: '450px', padding: '32px', position: 'relative' }}
+              style={{ 
+                width: '100%', 
+                maxWidth: '500px', 
+                margin: 'auto',
+                padding: '24px', 
+                position: 'relative',
+                maxHeight: '90vh',
+                overflowY: 'auto'
+              }}
             >
               <button onClick={() => setShowKnowledge(false)} style={{ position: 'absolute', top: 16, right: 16, background: 'transparent', color: '#666' }}>
                 <X size={20} />

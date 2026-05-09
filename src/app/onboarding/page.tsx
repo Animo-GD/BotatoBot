@@ -243,7 +243,7 @@ export default function OnboardingPage() {
       <div className="glass" style={{
         width: '100%',
         maxWidth: '500px',
-        padding: '40px',
+        padding: '32px 24px',
         position: 'relative',
         overflow: 'hidden'
       }}>
