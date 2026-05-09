@@ -270,11 +270,7 @@ export default function ChatPage() {
           // If n8n returns the system prompt, save it to the profile
           if (data?.system_prompt) {
             await supabase.schema('batata').from('profiles')
-              .update({ system_prompt: data.system_prompt, customized: true })
-              .eq('id', session.user.id);
-          } else {
-            await supabase.schema('batata').from('profiles')
-              .update({ customized: true })
+              .update({ system_prompt: data.system_prompt })
               .eq('id', session.user.id);
           }
         }

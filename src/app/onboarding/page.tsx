@@ -161,12 +161,6 @@ export default function OnboardingPage() {
               localStorage.setItem('batata_init_data', JSON.stringify(data));
             }
 
-            // 3. Mark as customized ONLY after successful webhook
-            await supabase
-              .schema('batata')
-              .from('profiles')
-              .update({ customized: true })
-              .eq('id', session.user.id);
           }
         }
       } catch (err) {
