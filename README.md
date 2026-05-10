@@ -2,7 +2,7 @@
 **BatataBotato** is a premium, state-of-the-art AI chatbot platform designed for deep personalization and high-performance RAG (Retrieval-Augmented Generation). Built with a stunning glassmorphic UI and a robust webhook-driven architecture, it transforms from a simple "potato" into a specialized assistant tailored exactly to the user's needs.
 
 ## Live Demo
-http://batatabotato.com/](http://batatabotato.com/)
+[http://batatabotato.com/](http://batatabotato.com/)
 
 ---
 
